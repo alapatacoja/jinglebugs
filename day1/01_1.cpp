@@ -9,6 +9,8 @@ sum differences between two ordered lists
 #include <string>
 #include <sstream>
 #include <vector>
+#include <algorithm> // Necesario para usar sort
+#include <cmath>     // Necesario para usar abs
 using namespace std;
 
 void load(vector<int> &v1, vector<int> &v2) {

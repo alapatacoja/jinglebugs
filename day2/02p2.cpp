@@ -65,17 +65,29 @@ void fillreport(vector<vector<int>> &reports){
     }
 }
 
+/*comprueba si es seguro*/
+bool seguro(vector<int> &v){
+    return diferencia(v)==0 && subibaja(v)==0;
+}
+
 int main(){
-    int safes=0, err1, err2;
+    int safes=0;
     vector<vector<int>> reports;
 
     fillreport(reports);
     for(int i=0; i<reports.size();i++){
-        err1 = diferencia(reports[i]);
-        err2 = subibaja(reports[i]);
-        //cout << err1 << " y " << err2 << endl;
-        if(err1==0 && err2==0)
-            safes+=1;
+        if(seguro(reports[i])){
+            safes++;
+        } else {
+            for(int j=0; j<reports[i].size(); j++){
+                vector<int> temp = reports[i];
+                temp.erase(temp.begin()+j);
+                if(seguro(temp)){
+                    safes++;
+                    break;
+                }
+            }
+        }
     }
     cout << "Numero de informes seguros: " << safes << endl;
 }
