@@ -64,17 +64,33 @@ void leerdata(vector<pair<int, int>> &reglas, vector<vector<int>> &updates){
             return update[update.size()/2];
         }
 
+        void ordenar(vector<pair<int, int>> &reglas, vector<int> &update){
+            bool ordenado = false;
+            while (!ordenado) {
+                ordenado = true;
+                for (int i = 0; i < update.size() - 1; i++) {
+                    for (int j = 0; j < reglas.size(); j++) {
+                        if (update[i] == reglas[j].second && update[i + 1] == reglas[j].first) {
+                            swap(update[i], update[i + 1]);
+                            ordenado = false;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
         int main(){
             vector<pair<int,int>> reglas;
             vector<vector<int>> updates;
-            int suma =0, m;
+            int suma =0;
 
             leerdata(reglas, updates);
             
             for(int i = 0; i<updates.size();i++){
-                if(verificar_update(reglas, updates[i])){
-                    m =  medio(updates[i]);
-                    suma+=m;
+                if(!verificar_update(reglas, updates[i])){
+                    ordenar(reglas, updates[i]);
+                    suma +=  medio(updates[i]);
                 }
             }
 
