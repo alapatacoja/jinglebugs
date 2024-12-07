@@ -8,17 +8,20 @@
 
 using namespace std;
 
-int main(){
+// Función principal
+int main() {
+    vector<string> entrada;
+    abrir_archivo(entrada);
 
-	vector <string> entrada;
-	long resultado = 0;
-	
-	abrir_archivo(entrada);
-	for (const string& linea : entrada) {
-		resultado+=crear_combinaciones(linea);
-	}
+    long long suma_resultados = 0;
 
-	cout<< "Resultado: " << resultado << endl; 
- 
-	return 0;
+    for (const string& linea : entrada) {
+        long long resultado = 0;
+        if (crear_combinaciones(linea, resultado)) {
+            suma_resultados += resultado;
+        }
+    }
+
+    cout << "La suma total de los valores de calibración es: " << suma_resultados << endl;
+    return 0;
 }
