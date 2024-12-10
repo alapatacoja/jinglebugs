@@ -36,12 +36,12 @@ void leer_linea(long long* valor_prueba, vector<long long>& numeros, const strin
 
 long long comprobar_siguientes(long long i, const vector<string>& combinacion){
         //caso base encontramos un operado diferente, o , caso base es el ultimo, cuando compruebe el siguiente se saldrá del bucle
-        if(combinacion[i+=2] == "||"){ //caso recursivo
-                i+=2;
-                return comprobar_siguientes(i, combinacion);
-         } else { //((i+=2)>=combinacion.size())|| (combinacion[i+=2] != "||")
-                 return i;
-         }
+        if(i+2>= combinacion.size()|| combinacion[i+2] !="||"){
+		return i;
+	}
+
+	i+=2;
+        return comprobar_siguientes(i, combinacion);
 }
 
 // Función para verificar si una combinación específica de operadores produce el valor objetivo
@@ -49,44 +49,45 @@ bool comprobar_combinacion(long long valor_prueba, const vector<string>& combina
     long long resultado = stoll(combinacion[0]);
     for (size_t i = 1; i < combinacion.size(); i += 2) {
         string operador = combinacion[i];
-	string siguiente_operador = combinacion[i+2];
         long long numero = stoll(combinacion[i + 1]);
-        if(siguiente_operador != "||"){
-	       	if (operador == "+") {
-            		resultado += numero;
-        	} else if (operador == "*") {
-            		resultado *= numero;
-        	}
-    	} else {
-		
-		cout<<"Hay un || en: " << i <<endl;
-		
-		i = i+2;
-                long long r = stoll(combinacion[i-1]);//primer numero que hay que juntar
-                long long n = comprobar_siguientes(i, combinacion);//comrobamos si hay que juntar varios seguidos y guardamos en n la posicion del ultimo || seguido
-		long long k;
-                        for(k = i; k <= n; k += 2){
-                                r = stoll(to_string(r)+(combinacion[k+1]));
+	long long n = 0;
+	//if((i+2<combinacion.size()&&combinacion[i+2]=="||") || (i==1 && combinacion[i]=="||")) { 
+	if(combinacion[i+2]=="||"){
+        	cout<<"Hay un || en: " << i+2 <<endl;
+                long long r = stoll(combinacion[i+1]);//primer numero que hay que juntar
+		n = comprobar_siguientes(i+2, combinacion);//comrobamos si hay que juntar varios seguidos y guardamos en n la posicion del ultimo
+  			cout<<"i: "<<i<<"N: "<<n<<endl;
+			for(long long k = i; k <= n; k += 2){
+                                r = stoll(to_string(r)+combinacion[k+1]);
                         }
                         numero = r; // y saltar el resto de números
-
-			cout<<"Resultado de juntar: "<<r<< endl;
-
-		if(operador == "+"){
-			resultado+=numero;
-		} else if(operador == "*"){
-			resultado*=numero;
-		}
-		
-
-		cout<<"Resultado de operar con el: "<<resultado<<endl;
-
-		i = k+2;
-		
-
-		cout<<"Pasamos al item: " <<i<<endl;
-	}
+			if (combinacion[i] == "+") {
+                		resultado += numero;
+        		} else if (combinacion[i] == "*") {
+                		resultado *= numero;
+        		}
+			i = n;
+			cout<<"Resultado de juntar: "<<numero<< endl;
+	} else if(combinacion[i]=="||"){
+	   	cout<<"Hay un || en: " << i <<endl;
+                long long r = stoll(combinacion[i-1]);//primer numero que hay que juntar
+		n = comprobar_siguientes(i, combinacion);//comrobamos si hay que juntar varios seguidos y guardamos en n la posicion del ultimo || seguidos
+                for(long long k = i; k <= n; k += 2){
+                        r = stoll(to_string(r) + combinacion[k+1]);
+                }
+		if(i==1) resultado =0;
+                resultado += r; // y saltar el resto de números
+		i = n;
+                cout<<"Resultado de juntar: "<<resultado<< endl;
+	} else{	
+     		if (operador == "+") {
+			resultado += numero;
+		} else if (operador == "*") {
+			resultado *= numero;
+        	}
+     	}
     }
+    cout<<"Resultado: "<<resultado<<endl;
     return resultado == valor_prueba;
 }
 			
@@ -108,20 +109,27 @@ bool crear_combinaciones(const string& linea, long long& resultado) {
             combinacion.push_back(to_string(numeros[j]));
             combinacion.push_back(operadores[(i / static_cast<int>(pow(3, j))) % 3]);
         }
-	    combinacion.push_back(to_string(numeros.back()));
-
 
 	cout<<"Combinación: ";
 	for(int i=0; i<combinacion.size(); i++){
 		cout<<combinacion[i];
-	} cout <<endl;
+	} cout<<endl;
 
 
         combinacion.push_back(to_string(numeros[posiciones]));
         if (comprobar_combinacion(valor_prueba, combinacion)) {
             resultado = valor_prueba;
+
+
+		cout<<"Sí: "<<resultado<< " = " <<valor_prueba<<endl;
+
             return true;
         }
+
+
+	cout<<"NO"<<endl;
+
+
     }
     return false;
 }
