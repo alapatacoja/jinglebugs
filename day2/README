@@ -24,4 +24,11 @@ Para este ejercicio se utilizó fuerza bruta recorriendo cada nivel y verificand
 
 3. Si el informe se considera seguro por ambas funciones, se incrementa el contador `safes`, una variable que devolverá al final el número total de informes seguros.
 
+En la segunda parte se añaden unos cambios para cumplir el nuevo requisito: si al quitar un nivel el informe se vuelve seguro, entonces se cuenta como seguro:
+   - Ahora las comprobaciones con las funciones `diferencia` y `subibaja` se hacen en una nueva función llamada `seguro` que devolverá un booleano dependiendo del resultado.
+   - Comprobación de informes inseguros:
+      - Si un informe no es seguro, se intenta corregir eliminando uno de sus niveles mediante un bucle.
+      - Se crea una copia temporal del informe (temp) sin el nivel actual, y se verifica si esta nueva versión cumple las condiciones de seguridad.
+      - Si alguna de estas versiones corregidas es segura, el informe se considera seguro, se sale del bucle y se incrementa la variable `safes`.
+
 ---
