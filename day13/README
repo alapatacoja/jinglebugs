@@ -1,0 +1,40 @@
+# Día 13: Resolución del Problema `Claw Contraption`
+
+## Descripción del Problema
+Calcular la cantidad mínima de monedas necesarias para conseguir el premio en una máquina de gancho.
+
+---
+
+## Motivación para Elegir este Problema
+Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
+- Un tema o técnica interesante que querías practicar.
+- Un desafío que te llamó la atención.
+- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
+
+Ejemplo:
+> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
+
+---
+
+## Técnicas y Estructuras de Datos Utilizadas
+Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
+
+Ejemplo:
+1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
+2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
+3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
+
+---
+
+## Descripción de la Solución
+Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
+
+Ejemplo:
+1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
+2. Implementar una función recursiva `comprobarPatrones` que:
+   - Verifica si un diseño puede ser formado utilizando los patrones.
+   - Cuenta cuántas formas distintas hay para lograrlo.
+3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
+4. Imprimir el resultado final.
+
+---
