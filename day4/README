@@ -1,40 +1,80 @@
-# Día 4: Resolución del Problema `Ceres Search`
+#DIA 4: Resolución de Problema 'Ceres Search'
 
-## Descripción del Problema
-Pegad lo que hayais puesto en el README global
+##Archivos Incluidos
+	Los archivos correspondientes a la primera parte del problema son:
+		- xmas.cpp (main)
+		- xmas.h (header)
+		- README.md (este archivo)
 
----
+##Descripción del Problema 
+	Este proyecto implementa un algoritmo en C++ para contar el número de veces que la palabra "XMAS" aparece en una grilla bidimensional. La palabra puede estar presente en cualquier dirección (horizontal, vertical o diagonal), y el algoritmo utiliza una combinación de búsqueda recursiva y "divide y vencerás" para optimizar el proceso.
 
-## Motivación para Elegir este Problema
-Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
-- Un tema o técnica interesante que querías practicar.
-- Un desafío que te llamó la atención.
-- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
+##técnicas y estructuras de datos utilizadas:
 
-Ejemplo:
-> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
+	El código está dividido en dos funciones principales:
 
----
+		buscarXMAS: Realiza la búsqueda de la palabra "XMAS" en una dirección específica desde una posición inicial.
 
-## Técnicas y Estructuras de Datos Utilizadas
-Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
+		contarXMASRecursivo: Divide la grilla en subgrillas para realizar la búsqueda de manera eficiente.
 
-Ejemplo:
-1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
-2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
-3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
+	Detalles de las Funciones
 
----
+		buscarXMAS: 
+			Esta función verifica si la palabra "XMAS" está presente en una dirección dada.
 
-## Descripción de la Solución
-Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
+			Parámetros:
 
-Ejemplo:
-1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
-2. Implementar una función recursiva `comprobarPatrones` que:
-   - Verifica si un diseño puede ser formado utilizando los patrones.
-   - Cuenta cuántas formas distintas hay para lograrlo.
-3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
-4. Imprimir el resultado final.
+			grid: Referencia constante a la grilla bidimensional.
 
----
+			x, y: Coordenadas iniciales.
+
+			dx, dy: Dirección de la búsqueda.
+
+			Retorno: 1 si la palabra está presente; de lo contrario, 0.
+
+		contarXMASRecursivo:
+
+			Divide la grilla en cuadrantes hasta que cada subgrilla sea suficientemente pequeña (menor a 4x4).
+
+			Parámetros:
+
+			grid: Referencia constante a la grilla bidimensional.
+
+			startX, startY: Coordenadas de la esquina superior izquierda de la subgrilla.
+
+			endX, endY: Coordenadas de la esquina inferior derecha de la subgrilla.
+
+			Retorno: Total de apariciones de "XMAS" en la subgrilla.
+	
+	Explicación de las Estructuras y Técnicas
+
+		vector<string>: Representa la grilla bidimensional.
+
+		Recursión y divide y vencerás: Para manejar eficientemente grillas grandes.
+
+		Condiciones de borde: Asegura que las búsquedas no excedan los límites de la grilla.
+
+
+##Descripción de la solución:
+
+	Dividir la grilla en subgrillas si es grande.
+
+	Realizar una búsqueda exhaustiva en subgrillas pequeñas.
+
+	Combinar los resultados de todas las subgrillas para obtener el total.
+
+
+##Cómo Compilar
+
+	Guarda el código en un dos archivos, uno llamado main.cpp y otro llamado xmas.h. (también se pueden usar los nombres originales).
+
+	Compila el archivo utilizando un compilador C++:
+
+		g++ -o buscarXMAS main.cpp xmas.h
+
+##Cómo Ejecutar
+
+	Ejecuta el archivo compilado desde la consola:
+
+		./buscarXMAS
+
