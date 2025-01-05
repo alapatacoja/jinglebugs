@@ -15,7 +15,8 @@ Miembros:
 - Carpeta: day2
 
 ### Día 3: 'Mull It Over'
-- Descripción: [].
+- Descripción: Identificar las intrucciones válidas mul(x,y) y devolver el producto de sus componentes y el sumatorio de todos.
+
 - Carpeta: day3
 
 ### Día 4: 'Ceres Search'
@@ -27,7 +28,7 @@ Miembros:
 - Carpeta: day5
 
 ### Día 6: 'Guard Gallivant'
-- Descripción: [].
+- Descripción: Determinar las posiciones del mapa donde colocar un objeto que obstaculice al guardia y quede atrapado en un bucle infinito.
 - Carpeta: day6
 
 ### Día 7: 'Bridge Repair'

@@ -74,7 +74,7 @@ int main() {
         return 1;
     }
 
-    // movimiento de la guardia
+    // movimiento del guardia
     int posiciones = movGuardia(mapa, filaIni, colIni);
 
     cout << "La guardia visitó " << posiciones << " posiciones distintas." << endl;

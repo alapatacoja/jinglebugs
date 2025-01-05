@@ -1,40 +1,32 @@
 # Día 6: Resolución del Problema `Guard Gallivant`
 
-## Descripción del Problema
-Pegad lo que hayais puesto en el README global
+## Archivos Incluidos
+		- 06.cpp (parte 1)
+		- 06_2.cpp (parte 2)
+      - input.txt (datos)
+		- README.md (este archivo)
 
----
+## Descripción del Problema
+Determinar las posiciones del mapa donde colocar un objeto que obstaculice al guardia y quede atrapado en un bucle infinito.
 
 ## Motivación para Elegir este Problema
-Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
-- Un tema o técnica interesante que querías practicar.
-- Un desafío que te llamó la atención.
-- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
-
-Ejemplo:
-> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
-
----
+Era el problema del día en advent code.
 
 ## Técnicas y Estructuras de Datos Utilizadas
-Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
 
-Ejemplo:
-1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
-2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
-3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
-
----
+1. Manejo de archivos (ifstream)
+2. Búsqueda exhaustiva y fuerza bruta
+3. Estructuras de datos:
+   - vector<pair<int, int>> para las direcciones de movimiento.
+   - set<pair<int, int>> para almacenar las posiciones visitadas.
+   - vector<string> para almacenar el mapa.
 
 ## Descripción de la Solución
-Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
 
-Ejemplo:
-1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
-2. Implementar una función recursiva `comprobarPatrones` que:
-   - Verifica si un diseño puede ser formado utilizando los patrones.
-   - Cuenta cuántas formas distintas hay para lograrlo.
-3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
-4. Imprimir el resultado final.
+1. Simulamos el movimiento del guardia en una función registrando las posiciones visitadas y verificando diferentes situaciones, devolviendo las posiciones que ha visitado.
+2. Leer el mapa `input.txt` y almacenarlo en un string `mapa`. 
+3. Buscamos la posicion del guardia en el mapa recorriendo el mapa, si no se encuentra retornamos 1 y finalizamos la operacion.
+4. Le pasamos a la funcion del movimiento del guardia el mapa y la posicion. 
+5. Returnear las posiciones que ha visitado el guardia, para saber en cuántas posiciones podemos colocar un objeto que le haga entrar en el bucle infinito.
 
----
+

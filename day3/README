@@ -1,40 +1,33 @@
 # Día 3: Resolución del Problema `Mull It Over`
 
-## Descripción del Problema
-Pegad lo que hayais puesto en el README global
+## Archivos Incluidos
+		- 03.cpp (parte 1)
+		- 03_2.cpp (parte 2)
+      - puzzleinput.txt (datos)
+		- README.md (este archivo)
 
----
+## Descripción del Problema
+Dada una "memoria dañada" (cadena de texto), identificar las intrucciones válidas: mul(x,y) y devolver el producto de sus componentes y el sumatorio de todos.
 
 ## Motivación para Elegir este Problema
-Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
-- Un tema o técnica interesante que querías practicar.
-- Un desafío que te llamó la atención.
-- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
-
-Ejemplo:
-> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
-
----
+Era el problema del día en advent code.
 
 ## Técnicas y Estructuras de Datos Utilizadas
-Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
 
-Ejemplo:
-1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
-2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
-3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
+1. Manejo de archivos (ifstream)
+2. Expresiones regulares std::regex para encontrar patrones específicos
+3. Iteradores sregex_iterator y bucle while para recorrer las coincidencias.
 
----
 
 ## Descripción de la Solución
-Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
 
-Ejemplo:
-1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
-2. Implementar una función recursiva `comprobarPatrones` que:
-   - Verifica si un diseño puede ser formado utilizando los patrones.
-   - Cuenta cuántas formas distintas hay para lograrlo.
-3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
-4. Imprimir el resultado final.
+1. Leer el puzzle `puzzleinput.txt` y almacenarlo en un vector `puzzle`. 
+ 
+2. Recorrer el string `puzzle` con la libreria regex utilizando iteradores de la libreria y la expresión regex mul(R"(mul\((\d+),(\d+)\))") para encontrar todas las coincidencias con la instrucción válida mul(x,y) 
 
----
+3. Hacer otra iteración con un bucle wile donde se recorre el string con las coincidencias encontradas y para poder operar con los enteros de la instruccion, los guardamos en dos variables int convirtiendolos con stoi (string to int).
+
+4. Dentro del bucle, operar y avanzar. Por último, fuera del bucle se muestra el resultado
+
+- En la segunda parte se añaden unos cambios para cumplir el nuevo requisito: las instrucciones contan de un do/dont delante que las habilitan o desactivan.
+
