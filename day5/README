@@ -1,7 +1,7 @@
 # Día 5: Resolución del Problema `Print Queue`
 
 ## Descripción del Problema
-Pegad lo que hayais puesto en el README global
+Comprobar qué páginas cumplen las reglas de orden y sumar los números de las páginas centrales.
 
 ---
 
@@ -17,24 +17,22 @@ Ejemplo:
 ---
 
 ## Técnicas y Estructuras de Datos Utilizadas
-Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
-
-Ejemplo:
-1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
-2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
-3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
-
----
+   - std::vector: para almacenar tanto las reglas de orden (pares de números) como las secuencias de actualizaciones.
+   - pair: para representar cada una de las reglas de dependencia entre las páginas (es decir, el número X debe aparecer antes que Y en la secuencia de actualización).
+   - búsqueda: en la función `verificar_updates` se hace una búsqueda para determinar si las reglas entre páginas se respetan.
+   - BubbleSort: en la segunda parte del problema para ordenar las actualizaciones.
 
 ## Descripción de la Solución
-Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
+1. Leer las reglas y las actualizaciones desde un archivo `input.txt` y almacenarlos en un vector de parejas de int `reglas` y en un vector de vectores de int `updates`. Dentro del archivo se dan primero las reglas de forma 'X|Y' y luego las actualizaciones como números separados por comas.
 
-Ejemplo:
-1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
-2. Implementar una función recursiva `comprobarPatrones` que:
-   - Verifica si un diseño puede ser formado utilizando los patrones.
-   - Cuenta cuántas formas distintas hay para lograrlo.
-3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
-4. Imprimir el resultado final.
+2. Recorrer el vector `updates` y comprobar los requisitos con la función `verificar_updates`:
+   - `bool verificar_update(vector<pair<int, int>> &reglas, vector<int> &update)`: 
+      Se recorre el vector de reglas y se guardan la primera y segunda página como X e Y. Dentro también se recorre el vector de actualizaciones y la actualización es igual a X o Y, se guarda su posición. Si la posición de X va antes que la de Y se devuelve 'false', si no 'true'.
 
----
+3. Si la función de verficar devuelve verdadero, se calcula la página de enmedio con la función `int medio(const vector<int> &update)` y se añade su valor a la variable `suma', encargada de guardar la página de enmedio de todas las actualizaciones correctas.
+
+En la segunda parte se añaden unos cambios para cumplir los nuevos requisitos: contar ahora solo las actualizaciones incorrectas y ordenarlas:
+   - Ahora si la función de verificar devuelve false, se llama a la siguiente función:
+      - `void ordenar(vector<pair<int, int>> &reglas, vector<int> &update)`:
+         
+

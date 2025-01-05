@@ -1,26 +1,29 @@
 # Día 2: Resolución del Problema `Red-Nosed Reports`
 
+## Archivos Incluidos
+		- 02.cpp (parte 1)
+		- 02p2.cpp (parte 2)
+      - input.txt (datos a leer)
+		- README.md (este archivo)
+
 ## Descripción del Problema
 Siguiendo un patrón de subida o bajada, contar qué informes eran seguros.
-
----
 
 ## Motivación para Elegir este Problema
 Elegimos este problema porque nuestro objetivo era hacer la mayoría de días en orden.
 
----
-
 ## Técnicas y Estructuras de Datos Utilizadas
-Para este ejercicio se utilizó fuerza bruta recorriendo cada nivel y verificando las dos condiciones: que suba o baje y que la diferencia entre un número y el siguiente sea menor a 3. Además se han utilizado vectores (std::vector) para almacenar los niveles.
-
----
+   - Fuerza bruta: recorriendo cada nivel y verificando las dos condiciones: que suba o baje y que la diferencia entre un número y el siguiente sea menor a 3.
+   - std::vector: para almacenar los niveles.
 
 ## Descripción de la Solución
 1. Leer los informes y los niveles desde un archivo `input.txt` y almacenarlos en un vector de vectores de int `reports`. Cada línea del archivo es un informe y cada número separado con espacios es un nivel.
 
 2. Recorrer el vector `reports` y comprobar los dos requisitos con las funciones `diferencia` y `subibaja`:
-   - `diferencia`: Se recorre el vector de niveles y se calcula la diferencia entre cada par de elementos. Si alguna diferencia no está en el rango de entre 1 y 3, el informe se considera inseguro. 
-   - `subibaja`: Se verifica si el informe sigue un patrón de subida o bajada desde el primer nivel. Si el patrón cambia a lo largo del informe (por ejemplo, pasa de subida a bajada), o si hay niveles consecutivos iguales, el informe se considera inseguro.
+   - `int diferencia(vector<int> v)`: 
+      Se recorre el vector de niveles y se calcula la diferencia entre cada par de elementos. Si alguna diferencia no está en el rango de entre 1 y 3, el informe se considera inseguro. 
+   - `int subibaja(vector<int> v)`: 
+      Se verifica si el informe sigue un patrón de subida o bajada desde el primer nivel. Si el patrón cambia a lo largo del informe (por ejemplo, pasa de subida a bajada), o si hay niveles consecutivos iguales, el informe se considera inseguro.
 
 3. Si el informe se considera seguro por ambas funciones, se incrementa el contador `safes`, una variable que devolverá al final el número total de informes seguros.
 
@@ -30,5 +33,3 @@ En la segunda parte se añaden unos cambios para cumplir el nuevo requisito: si 
       - Si un informe no es seguro, se intenta corregir eliminando uno de sus niveles mediante un bucle.
       - Se crea una copia temporal del informe (temp) sin el nivel actual, y se verifica si esta nueva versión cumple las condiciones de seguridad.
       - Si alguna de estas versiones corregidas es segura, el informe se considera seguro, se sale del bucle y se incrementa la variable `safes`.
-
----

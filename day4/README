@@ -1,15 +1,15 @@
-#DIA 4: Resolución de Problema 'Ceres Search'
+# DIA 4: Resolución de Problema 'Ceres Search'
 
-##Archivos Incluidos
+## Archivos Incluidos
 	Los archivos correspondientes a la primera parte del problema son:
 		- xmas.cpp (main)
 		- xmas.h (header)
 		- README.md (este archivo)
 
-##Descripción del Problema 
+## Descripción del Problema 
 	Este proyecto implementa un algoritmo en C++ para contar el número de veces que la palabra "XMAS" aparece en una grilla bidimensional. La palabra puede estar presente en cualquier dirección (horizontal, vertical o diagonal), y el algoritmo utiliza una combinación de búsqueda recursiva y "divide y vencerás" para optimizar el proceso.
 
-##técnicas y estructuras de datos utilizadas:
+## Técnicas y estructuras de datos utilizadas:
 
 	El código está dividido en dos funciones principales:
 
@@ -55,7 +55,7 @@
 		Condiciones de borde: Asegura que las búsquedas no excedan los límites de la grilla.
 
 
-##Descripción de la solución:
+## Descripción de la solución:
 
 	Dividir la grilla en subgrillas si es grande.
 
@@ -64,7 +64,7 @@
 	Combinar los resultados de todas las subgrillas para obtener el total.
 
 
-##Cómo Compilar
+## Cómo Compilar
 
 	Guarda el código en un dos archivos, uno llamado main.cpp y otro llamado xmas.h. (también se pueden usar los nombres originales).
 
@@ -72,7 +72,7 @@
 
 		g++ -o buscarXMAS main.cpp xmas.h
 
-##Cómo Ejecutar
+## Cómo Ejecutar
 
 	Ejecuta el archivo compilado desde la consola:
 
