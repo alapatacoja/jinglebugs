@@ -44,6 +44,10 @@ Miembros:
 - Descripción: Calcular la cantidad mínima de monedas necesarias para conseguir el premio en una máquina de gancho.
 - Carpeta: day13
 
+### Día 16: 'Reindeer Maze'
+- Descripción: Encontrar los puntos mínimos que puede conseguir un reno desde una posición inicial (S) hasta una posición final (E) en un mapa con obstáculos.
+- Carpeta: day16
+
 ### Día 19: 'Linen Layout'
 - Descripción: Comprobar cuántos diseños son posibles con unos patrones dados.
 - Carpeta: day19

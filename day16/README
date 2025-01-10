@@ -1,0 +1,42 @@
+# Día 16: Resolución del Problema `Reindeer Maze`
+
+## Descripción del Problema
+El objetivo del problema es encontrar los puntos mínimos que puede conseguir un reno desde una posición inicial (S) hasta una posición final (E) en un mapa con obstáculos.
+
+---
+
+## Motivación para Elegir este Problema
+Elegimos este problema porque hacía uso de árboles y búsqueda en anchura (BFS).
+
+---
+
+## Técnicas y Estructuras de Datos Utilizadas
+1. Búsqueda en Anchura (BFS): Para explorar las posibles rutas desde el punto inicial al final.
+2. Árboles: Cada nodo del árbol representa un estado del reno en el laberinto, incluyendo su posición, dirección, puntaje acumulado y un puntero al nodo anterior.
+3. Cola (queue): Utilizada para implementar BFS y garantizar que las rutas se exploren en el orden correcto.
+4. Vectores: Para comprobar si ciertas posiciones han sido visitadas y para representar el mapa.
+
+---
+
+## Descripción de la Solución
+
+1. Se utiliza la función rellenarmapa para leer el archivo input.txt y construir un mapa representado como una matriz de caracteres.
+
+2. Cada estado del reno se representa como un nodo de un árbol:
+    - `(x, y)`: Posición actual del reno.
+    - `direccion`: Dirección en la que está orientado (0 = Norte, 1 = Este, 2 = Sur, 3 = Oeste).
+    - `puntos`: Puntaje acumulado hasta ese estado.
+
+3. Se utiliza una cola para gestionar los nodos por procesar:
+    - Movimiento hacia adelante:
+        - Avanza una casilla en la dirección actual y se suma 1 punto.
+        - Se valida que no haya paredes y que no haya sido visitado.
+    - Giro horario y antihorario:
+        - Cambia la orientación y se suman 1000 puntos.
+        - Se valida que el nuevo estado no haya sido visitado.
+
+4. Cuando un nodo alcanza el destino (`E`), se compara con `minpuntos`. El menor de los dos al final del BFS es el resultado.
+
+5. Al finalizar el recorrido, se imprimen los puntos del camino con menos coste.
+
+---
