@@ -6,35 +6,29 @@ Calcular la cantidad mínima de monedas necesarias para conseguir el premio en u
 ---
 
 ## Motivación para Elegir este Problema
-Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
-- Un tema o técnica interesante que querías practicar.
-- Un desafío que te llamó la atención.
-- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
-
-Ejemplo:
-> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
+Elegimos este problema porque pensábamos que podría ser resuelto mediante Programación Dinámica, sin embargo, solucionarlo con un sistema de ecuaciones lineales era mucho más sencillo.
 
 ---
 
 ## Técnicas y Estructuras de Datos Utilizadas
-Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
+1. Estructuras de Datos Personalizadas:
+   - Se define una estructura `Maquina` para almacenar los valores de cada máquina. Era más práctico que un vector porque en la parte dos en vez de int se usa long long. 
 
-Ejemplo:
-1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
-2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
-3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
+2. Regex:
+   - Utilizado para extraer valores desde el archivo `input.txt`.
 
 ---
 
 ## Descripción de la Solución
-Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
+### Primera Parte:
+1. Se lee el archivo `input.txt` y, utilizando regex, se extraen las configuraciones de cada máquina (`ax`, `ay`, `bx`, `by`, `px`, `py`).
 
-Ejemplo:
-1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
-2. Implementar una función recursiva `comprobarPatrones` que:
-   - Verifica si un diseño puede ser formado utilizando los patrones.
-   - Cuenta cuántas formas distintas hay para lograrlo.
-3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
-4. Imprimir el resultado final.
+2. Para cada máquina, se calcula el determinante del sistema y se verifica que sea distinto de cero. Se calculan las soluciones `x` y `y` utilizando la fórmula de Cramer. Se valida que las soluciones sean enteras y menores a 100.
+
+3. El costo total para una máquina es 3x + y, que se acumula en el resultado final.
+
+4. Se imprime la suma total de monedas necesarias para todas las máquinas.
+
+En la segunda parte se añade la dificultad de añadir a la posición de los premios 10000000000000.
 
 ---

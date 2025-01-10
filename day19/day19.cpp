@@ -29,14 +29,19 @@ void leerdata(vector<string> &patrones, vector<string> &disenos){
     }
 }
 
-bool comprobarPatrones(string diseno, vector<string> patrones){
+bool comprobarPatrones(string diseno, vector<string> patrones, vector<int> &mem){
     if(diseno.empty())
         return true;
-        
+    
+    int n = diseno.size();
+    if(mem[n] != -1) 
+        return mem[n];
+
     for(int i=0; i<patrones.size(); i++){
         //cout << diseno << "|" << patrones[i] << endl;
         if(diseno.find(patrones[i]) == 0) {
-            if (comprobarPatrones(diseno.substr(patrones[i].length()), patrones)) {
+            if (comprobarPatrones(diseno.substr(patrones[i].length()), patrones, mem)) {
+                mem[n] = 1;
                 return true;
             }
         }
@@ -45,6 +50,7 @@ bool comprobarPatrones(string diseno, vector<string> patrones){
     if(diseno.length()==1)
         return false;
     else comprobarPatrones(diseno.substr(0, diseno.size()-1), patrones, disenoorginal);*/
+    mem[n] = 0;
     return false;
 }
 
@@ -52,15 +58,17 @@ int main() {
     vector<string> patrones;
     vector<string> disenos;
     int sum = 0;
+
     leerdata(patrones, disenos);
 
     for(int i=0; i<disenos.size(); i++){
-         if (comprobarPatrones(disenos[i], patrones)) {
+        vector<int> mem(disenos[i].size()+1, -1);
+        if (comprobarPatrones(disenos[i], patrones, mem)) {
             sum++;
         } 
 
-        cout << sum << endl;
+        
     }
-
+    cout << sum << endl;
     return 0;
 }

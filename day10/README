@@ -1,0 +1,36 @@
+# Día 10: Resolución del Problema `Hoof It`
+
+## Descripción del Problema
+El objetivo del problema es encontrar la cantidad total de celdas con valor `9` alcanzables desde las posiciones iniciales con valor `0` en un mapa de alturas.
+
+---
+
+## Motivación para Elegir este Problema
+Elegimos este problema porque combina conceptos interesantes como la búsqueda en anchura (BFS) y grafos.
+
+---
+
+## Técnicas y Estructuras de Datos Utilizadas
+1. Matrices (`vector<vector<int>>`): Representan el mapa de alturas, donde cada celda contiene un valor entero.
+2. Búsqueda en Anchura (BFS): Utilizada para explorar todas las celdas alcanzables desde un punto inicial siguiendo las reglas del problema.
+3. Cola (`queue`): Implementada para gestionar el orden de exploración en el algoritmo BFS.
+4. Matrices de Visitados: Evitan reexplorar celdas ya procesadas, optimizando el recorrido.
+
+---
+
+## Descripción de la Solución
+
+1. La función `leer` se encarga de leer el archivo de entrada `input.txt` y construir una matriz 2D (`mapa`). Cada línea del archivo representa una fila del mapa, donde los caracteres se convierten en enteros y se almacenan en un `vector<vector<int>>`.
+
+2. Se recorren todas las celdas del mapa. Cada vez que se encuentra una celda con valor `0`, se llama a la función `shortestpath` para contar cuántas celdas con valor `9` son alcanzables desde esa posición.
+
+3. La función `shortestpath` realiza lo siguiente:
+   - Marca la celda inicial como visitada y la añade a la cola.
+   - Mientras la cola no esté vacía, extrae una celda, verifica si contiene el valor `9` y añade sus vecinos válidos (no visitados, dentro de los límites, y con altura `1` mayor) a la cola.
+   - Cuenta las celdas con valor `9` encontradas durante el recorrido.
+
+4. Se acumula el total de celdas con valor `9` alcanzables desde todas las posiciones iniciales (`0`) del mapa.
+
+5. Al finalizar el recorrido, se imprime la suma total de celdas alcanzadas.
+
+---

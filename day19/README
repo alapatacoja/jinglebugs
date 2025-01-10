@@ -6,35 +6,30 @@ Comprobar cuántos diseños son posibles con unos patrones dados.
 ---
 
 ## Motivación para Elegir este Problema
-Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
-- Un tema o técnica interesante que querías practicar.
-- Un desafío que te llamó la atención.
-- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
-
-Ejemplo:
-> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
+Elegimos este problema porque se podía resolver con Programación Dinámica.
 
 ---
 
 ## Técnicas y Estructuras de Datos Utilizadas
-Enumera las técnicas y estructuras de datos que empleaste para resolver el problema. Explica brevemente su rol en la solución.
-
-Ejemplo:
-1. **Recursión**: Se utilizó para explorar todas las combinaciones posibles de patrones que forman un diseño.
-2. **Vectores**: Para almacenar los patrones y diseños de entrada, lo que facilita iterar sobre ellos.
-3. **Operaciones con cadenas**: Para dividir y reducir dinámicamente los diseños durante la evaluación.
+1. Recursión: Se utilizó recursión para comprobar si un diseño puede formarse utilizando los patrones dados.
+2. Programación Dinámica con memoria: Se empleó para almacenar los resultados de subproblemas resueltos previamente y reutilizarlos, mejorando la eficiencia de la solución.
+3. Vectores: Se utilizaron para almacenar los patrones y los diseños, facilitando su acceso y manipulación.
+4. Cadenas: Para identificar si los patrones podían formar parte del diseño y para dividir dinámicamente las cadenas de los diseños.
 
 ---
 
 ## Descripción de la Solución
-Explica paso a paso cómo abordaste la resolución del problema. Aquí puedes incluir pseudocódigo, diagramas de flujo o fragmentos de código relevantes.
+1. Se lee el archivo `input.txt`, que contiene los patrones y los diseños. Los patrones se almacenan en un vector y los diseños en otro.
 
-Ejemplo:
-1. Leer los patrones y diseños desde un archivo `input.txt` y almacenarlos en vectores.
-2. Implementar una función recursiva `comprobarPatrones` que:
-   - Verifica si un diseño puede ser formado utilizando los patrones.
-   - Cuenta cuántas formas distintas hay para lograrlo.
-3. Iterar sobre cada diseño para calcular la suma total de formas posibles.
-4. Imprimir el resultado final.
+2. Función Recursiva `comprobarPatrones`:
+   - Esta función toma un diseño y verifica si puede ser generado utilizando los patrones. Se hace una búsqueda de patrones en el inicio de la cadena del diseño.
+   - Si encuentra un patrón al principio, se llama recursivamente a la función con el resto del diseño, eliminando el patrón que ya ha sido utilizado.
+   - Se utiliza una memoria para almacenar los resultados de subproblemas resueltos previamente y evitar cálculos repetidos, lo que optimiza el tiempo de ejecución.
+
+3. Contar Diseños Válidos:
+   - Para cada diseño, se invoca la función `comprobarPatrones` para verificar si es válido. Si es válido, se incrementa el contador de diseños válidos.
+
+4. Salida:
+   - Finalmente, se imprime el número total de diseños que pueden ser formados con los patrones disponibles.
 
 ---

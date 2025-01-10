@@ -6,13 +6,7 @@ Comprobar qué páginas cumplen las reglas de orden y sumar los números de las 
 ---
 
 ## Motivación para Elegir este Problema
-Describe por qué seleccionaste este problema en particular. Puede estar relacionado con:
-- Un tema o técnica interesante que querías practicar.
-- Un desafío que te llamó la atención.
-- La relevancia del problema para tus objetivos de aprendizaje o proyecto.
-
-Ejemplo:
-> Elegimos este problema porque permite practicar técnicas de recursión y manejo eficiente de cadenas. Además, ofrece un buen ejercicio para consolidar el uso de estructuras de datos básicas como vectores y operaciones con strings.
+Elegimos este problema porque permite practicar técnicas de manejo de estructuras de datos como vectores y parejas.
 
 ---
 
@@ -23,16 +17,21 @@ Ejemplo:
    - BubbleSort: en la segunda parte del problema para ordenar las actualizaciones.
 
 ## Descripción de la Solución
-1. Leer las reglas y las actualizaciones desde un archivo `input.txt` y almacenarlos en un vector de parejas de int `reglas` y en un vector de vectores de int `updates`. Dentro del archivo se dan primero las reglas de forma 'X|Y' y luego las actualizaciones como números separados por comas.
+1. Se implementa la función `leerdata` para procesar el archivo `input.txt`. Los datos se dividen en dos partes: 
+   - Reglas de orden: Representadas como pares de enteros, leídas en formato `X|Y`.
+   - Actualizaciones: Cada línea posterior al bloque de reglas contiene secuencias de enteros separados por comas.
 
-2. Recorrer el vector `updates` y comprobar los requisitos con la función `verificar_updates`:
-   - `bool verificar_update(vector<pair<int, int>> &reglas, vector<int> &update)`: 
-      Se recorre el vector de reglas y se guardan la primera y segunda página como X e Y. Dentro también se recorre el vector de actualizaciones y la actualización es igual a X o Y, se guarda su posición. Si la posición de X va antes que la de Y se devuelve 'false', si no 'true'.
+2. Se utiliza la función `verificar_update` para comprobar si una secuencia cumple con las reglas de dependencia. Esta función:
+   - Busca la posición de los elementos X e Y en la secuencia.
+   - Si X aparece después de Y (violando la regla) y ambos existen en la secuencia, la verificación falla (`false`).
 
-3. Si la función de verficar devuelve verdadero, se calcula la página de enmedio con la función `int medio(const vector<int> &update)` y se añade su valor a la variable `suma', encargada de guardar la página de enmedio de todas las actualizaciones correctas.
+3. La función `medio` se encarga de encontrar el valor en la posición central de una secuencia válida.
 
-En la segunda parte se añaden unos cambios para cumplir los nuevos requisitos: contar ahora solo las actualizaciones incorrectas y ordenarlas:
-   - Ahora si la función de verificar devuelve false, se llama a la siguiente función:
-      - `void ordenar(vector<pair<int, int>> &reglas, vector<int> &update)`:
+4. En la primera parte, si una secuencia cumple las reglas (`verificar_update` devuelve `true`), se suma su valor central al total. En la segunda parte, si una secuencia no cumple las reglas (`verificar_update` devuelve `false`), se corrige su orden utilizando la función `ordenar` y luego se suma el valor central al total.
+
+5. La función `ordenar` implementa un algoritmo de ordenamiento básico. Para cada par de valores en la secuencia:
+   - Si detecta que los valores están en un orden que viola las reglas, intercambia sus posiciones (`swap`) hasta que toda la secuencia respete las dependencias.
+
+6. El programa imprime la suma total de las páginas centrales tras procesar todas las secuencias.
          
 

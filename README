@@ -16,11 +16,12 @@ Miembros:
 
 ### Día 3: 'Mull It Over'
 - Descripción: Identificar las intrucciones válidas mul(x,y) y devolver el producto de sus componentes y el sumatorio de todos.
-
 - Carpeta: day3
 
 ### Día 4: 'Ceres Search'
-- Descripción: [].
+- Descripción: Este proyecto implementa un algoritmo en C++ para contar el número de veces que la palabra "XMAS" aparece en una grilla bidimensional. 
+  La palabra puede estar presente en cualquier dirección (horizontal, vertical o diagonal), y el algoritmo utiliza una combinación de búsqueda recursiva 
+  y "divide y vencerás" para optimizar el proceso.
 - Carpeta: day4
 
 ### Día 5: 'Print Queue'
@@ -35,8 +36,8 @@ Miembros:
 - Descripción: [].
 - Carpeta: day7
 
-### Día 10: '[]'
-- Descripción: []
+### Día 10: 'Hoof It'
+- Descripción: El objetivo del problema es encontrar la cantidad total de celdas con valor `9` alcanzables desde las posiciones iniciales con valor `0` en un mapa de alturas.
 - Carpeta: day10
 
 ### Día 13: 'Claw Contraption'
