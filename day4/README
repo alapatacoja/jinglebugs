@@ -63,6 +63,19 @@
 
 	Combinar los resultados de todas las subgrillas para obtener el total.
 
+##Alternativas de Solución
+
+	En lugar de dividir la grilla en subgrillas, se podría realizar una búsqueda recursiva en toda la grilla.
+
+	Se ha elegido la división de grillas para optimizar el proceso y reducir el tiempo de ejecución.
+
+##Valoración del probelma
+
+	El problema de búsqueda de palabras en una grilla bidimensional es un desafío interesante que requiere un enfoque eficiente y recursivo.
+
+	He aprendido a dividir y conquistar para optimizar la búsqueda en grillas grandes.
+
+	La implementación de algoritmos recursivos y la manipulación de grillas bidimensionales son habilidades valiosas en la programación.
 
 ## Cómo Compilar
 
