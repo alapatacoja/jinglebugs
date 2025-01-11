@@ -33,7 +33,7 @@ Miembros:
 - Carpeta: day6
 
 ### Día 7: 'Bridge Repair'
-- Descripción: [].
+- Descripción: Comprobar todas las posibles combinaciones entre los números del input, con los operandos * y +, y si alguna da como resultado el número resultado sumarla al resultado total.
 - Carpeta: day7
 
 ### Día 8: 'Resonant Collinearity'
