@@ -8,9 +8,9 @@
 using namespace std;
 
 // Función para abrir el archivo y leer sus líneas
-void abrir_archivo(vector<string>& entrada) {
+void abrir_archivo(string arch, vector<string>& entrada) {
     string linea;
-    ifstream archivo("input2.txt");
+    ifstream archivo(arch);
     if (!archivo) {
         cerr << "No se pudo abrir el archivo input2.txt" << endl;
         return;

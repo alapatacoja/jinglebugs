@@ -1,0 +1,29 @@
+# Día 8: Resolución del Problema `Resonant Collinearity`
+
+## Archivos Incluidos
+		- 08.cpp (parte 1)
+    	- input.txt (datos)
+		- README.md (este archivo)
+
+## Descripción del Problema
+Calcular la cantidad de antinodos únicos generados por antenas ubicadas en un mapa, sabiendo las frecuencias de cada una, pudiendo ser iguales o diferentes.
+
+## Motivación para Elegir este Problema
+Elegimos este problema se podia implementar utilizando una tabla hash para manejar grandes volumenes de datos.
+
+## Técnicas y Estructuras de Datos Utilizadas
+
+1. Manejo de archivos (ifstream)
+2. Tabla Hash (unordered_map): agrupar las coordenadas de las antenas por su frecuencia.
+
+## Descripción de la Solución
+
+1. Leer el mapa `input` y representar cada linea como una fila del mapa.
+ 
+2. Recorrer el mapa y almacenar las coordenadas no vacias de la antena en una tabla hash.
+
+3. Por cada par de antenas con la misma frecuencia, calcular la diferencia entre las coordenadas. De las diferencias, generar antinodos en ambas direcciones, desplazando las coordenadas de las antenas en función de la diferencia entre ellas.
+
+4. Verificar que las coordenadas están en los límites del mapa, y agregar la coordenada al conjunto de antinodos.
+
+5. Finalmente, devolvemos el tamaño del conjunto de antinodos que es el número total de antinodos.
