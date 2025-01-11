@@ -36,6 +36,10 @@ Miembros:
 - Descripción: [].
 - Carpeta: day7
 
+### Día 8: 'Resonant Collinearity'
+- Descripción: Calcular la cantidad de antinodos únicos generados por antenas ubicadas en un mapa, sabiendo las frecuencias de cada una, pudiendo ser iguales o diferentes. 
+- Carpeta: day8
+
 ### Día 10: 'Hoof It'
 - Descripción: El objetivo del problema es encontrar la cantidad total de celdas con valor `9` alcanzables desde las posiciones iniciales con valor `0` en un mapa de alturas.
 - Carpeta: day10
