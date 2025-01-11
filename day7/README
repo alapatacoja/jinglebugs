@@ -1,67 +1,80 @@
-DIA 4: Resolución de Problema 'Ceres Search'
-Archivos Incluidos
+# Día 7: 'Bridge Repair
 
+## Archivos del Problema
 Los archivos correspondientes a la primera parte del problema son:
 
     main.cpp (contiene el código principal)
     README.md (este archivo)
 
-Descripción del Problema
+---
 
-Este proyecto implementa un algoritmo en C++ para leer datos desde un archivo de texto y encontrar combinaciones de operadores (suma y multiplicación) que, aplicadas a una lista de números, den como resultado un valor objetivo. El algoritmo explora todas las combinaciones posibles de operadores entre los números, con el objetivo de verificar si alguna combinación da como resultado el valor objetivo.
-Técnicas y estructuras de datos utilizadas:
+## Descripción del Problema
+Comprobar todas las posibles combinaciones entre los números del input, con los operandos * y +, y si alguna da como resultado el número resultado sumarla al resultado total.
+
+---
+
+## Motivación para Elegir este Problema
+
+---
+
+## Técnicas y Estructuras de Datos Utilizadas
+    1. Vectores: Se utilizan para almacenar tanto las líneas del archivo como los números y combinaciones de operadores.
+    2. Cadenas: Se usan para representar tanto los números como los operadores.
+    3. Combinatoria: Para generar todas las posibles combinaciones de operadores entre los números.
+    4. Conversión de cadenas a números: Para convertir los números representados como cadenas de texto a valores enteros de tipo long long.i
 
 El código está dividido en varias funciones principales que gestionan el flujo de trabajo:
 
-    abrir_archivo: Esta función se encarga de abrir un archivo de texto y leer todas las líneas dentro de un contenedor de tipo vector<string>, el cual almacena las líneas del archivo.
+    1. abrir_archivo: Esta función se encarga de abrir un archivo de texto y leer todas las líneas dentro de un contenedor de tipo vector<string>, el cual almacena las líneas del archivo.
         Parámetros:
             arch: El nombre del archivo que contiene los datos de entrada.
             entrada: El vector donde se almacenarán las líneas del archivo.
         Retorno: Ninguno. Si el archivo no se puede abrir, imprime un mensaje de error.
 
-    leer_linea: Extrae el valor objetivo y los números de cada línea leída desde el archivo.
+    2. leer_linea: Extrae el valor objetivo y los números de cada línea leída desde el archivo.
         Parámetros:
             valor_prueba: Puntero a una variable donde se almacenará el valor objetivo.
             numeros: Vector donde se almacenarán los números.
             linea: La línea del archivo que contiene el valor objetivo y los números.
         Retorno: Ninguno.
 
-    comprobar_combinacion: Verifica si una combinación específica de operadores (suma y multiplicación) aplicada a los números genera el valor objetivo.
+    3. comprobar_combinacion: Verifica si una combinación específica de operadores (suma y multiplicación) aplicada a los números genera el valor objetivo.
         Parámetros:
             valor_prueba: El valor objetivo a verificar.
             combinacion: Una lista de cadenas que representa una secuencia de números y operadores.
         Retorno: true si la combinación produce el valor objetivo, de lo contrario false.
 
-    crear_combinaciones: Genera todas las combinaciones posibles de operadores entre los números y verifica si alguna de ellas produce el valor objetivo.
+    4. crear_combinaciones: Genera todas las combinaciones posibles de operadores entre los números y verifica si alguna de ellas produce el valor objetivo.
         Parámetros:
             linea: Una línea del archivo que contiene el valor objetivo y los números.
             resultado: El valor resultante si se encuentra una combinación que da el valor objetivo.
         Retorno: true si se encuentra una combinación que cumple con el valor objetivo, de lo contrario false.
 
-Descripción de la solución:
+---
 
-    Leer datos del archivo: La función abrir_archivo lee las líneas del archivo de entrada y las almacena en un vector.
-    Procesar cada línea: Para cada línea, se extraen el valor objetivo y los números utilizando la función leer_linea.
-    Generar combinaciones: Se generan todas las combinaciones posibles de operadores (+ y *) entre los números y se verifica si alguna de estas combinaciones da como resultado el valor objetivo utilizando la función crear_combinaciones.
-    Verificación: La función comprobar_combinacion aplica los operadores a los números y verifica si se obtiene el valor objetivo.
+## Descripción de la Solución
+    1. Leer datos del archivo: La función abrir_archivo lee las líneas del archivo de entrada y las almacena en un vector.
+    2. Procesar cada línea: Para cada línea, se extraen el valor objetivo y los números utilizando la función leer_linea.
+    3. Generar combinaciones: Se generan todas las combinaciones posibles de operadores (+ y *) entre los números y se verifica si alguna de estas combinaciones da como resultado el valor objetivo utilizando la función crear_combinaciones.
+    4. Verificación: La función comprobar_combinacion aplica los operadores a los números y verifica si se obtiene el valor objetivo.
+         
+## Alternativas Consideradas
+    1. Uso de un enfoque basado en árboles para representar las combinaciones de operadores y números.
+    2. Implementación de un algoritmo de fuerza bruta para generar y evaluar todas las combinaciones posibles de operadores y números.
+    La razón para no usarlo es que la construcción y manipulación de un árbol binario puede ser más compleja de implementar que el enfoque basado en vectores de cadenas. Además, el problema no requiere una estructura de árbol compleja, ya que la simple combinación de operaciones es suficiente. 
 
-Técnicas y estructuras utilizadas:
+---
 
-    Vectores: Se utilizan para almacenar tanto las líneas del archivo como los números y combinaciones de operadores.
-    Cadenas: Se usan para representar tanto los números como los operadores.
-    Combinatoria: Para generar todas las posibles combinaciones de operadores entre los números.
-    Conversión de cadenas a números: Para convertir los números representados como cadenas de texto a valores enteros de tipo long long.
+## Valoración personal
+El problema fue interesante de resolver, ya que requirió el uso de combinaciones y permutaciones para generar todas las posibles combinaciones de operadores entre los números. La implementación de las funciones para leer los datos del archivo, generar las combinaciones y verificar si alguna de ellas produce el valor objetivo fue un desafío interesante. En general, el problema fue una buena oportunidad para practicar el uso de vectores, cadenas y combinaciones en C++.
 
-Cómo Compilar
+---
 
-Guarda el código en dos archivos: main.cpp y xmas.h (siendo este último opcional, dependiendo de la organización del código). Luego compila el archivo utilizando un compilador C++:
+## Como compilar y ejecutar el programa
+Para compilar el programa, se debe ejecutar el siguiente comando en la terminal:
 
-g++ -o resolverCombinaciones main.cpp
+    g++ -o day7 day7.cpp day7.h
 
-Cómo Ejecutar
+Para ejecutar el programa, se debe ejecutar el siguiente comando en la terminal:
 
-Ejecuta el archivo compilado desde la consola:
-
-./resolverCombinaciones
-
-El programa tomará un archivo de entrada (por ejemplo input2.txt) que debe estar en el mismo directorio o especificado en el código, y procesará los datos conforme a la lógica implementada.
+    ./day7 
