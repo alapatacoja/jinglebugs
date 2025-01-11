@@ -1,0 +1,61 @@
+# Día 7: Resolución del Problema `Bridge Repair`
+##Archivos correspondientes al problema
+- `input.txt`: Archivo de entrada con los datos del problema.
+- day7.cpp: Archivo con el main.
+- day7.h: Archivo con las funciones.
+- day7: archivo ejecutable.
+
+## Descripción del Problema
+Comprobar todas las posibles combinaciones entre los números del input, con los operandos * y +, y si alguna da como resultado el número resultado sumarla al resultado total.
+ 
+## Motivación para Elegir este Problema
+Elegimos este problema porque la motivación inicial era resolver todos los días del reto en orden, además este problema en concreto resultaba interesante.
+
+## Técnicas y Estructuras de Datos Utilizadas
+Estructuras y técnicas utilizdas:
+    1. Vectores: Se utilizan para almacenar tanto las líneas del archivo como los números y combinaciones de operadores.
+    2. Cadenas: Se usan para representar tanto los números como los operadores.
+    3. Combinatoria: Para generar todas las posibles combinaciones de operadores entre los números.
+    4. Conversión de cadenas a números: Para convertir los números representados como cadenas de texto a valores enteros de tipo long long.
+
+El código está dividido en varias funciones principales que gestionan el flujo de trabajo:
+
+    1. abrir_archivo: Esta función se encarga de abrir un archivo de texto y leer todas las líneas dentro de un contenedor de tipo vector<string>, el cual almacena las líneas del archivo.
+        Parámetros:
+            arch: El nombre del archivo que contiene los datos de entrada.
+            entrada: El vector donde se almacenarán las líneas del archivo.
+        Retorno: Ninguno. Si el archivo no se puede abrir, imprime un mensaje de error.
+
+    2. leer_linea: Extrae el valor objetivo y los números de cada línea leída desde el archivo.
+        Parámetros:
+            valor_prueba: Puntero a una variable donde se almacenará el valor objetivo.
+            numeros: Vector donde se almacenarán los números.
+            linea: La línea del archivo que contiene el valor objetivo y los números.
+        Retorno: Ninguno.
+
+    3. comprobar_combinacion: Verifica si una combinación específica de operadores (suma y multiplicación) aplicada a los números genera el valor objetivo.
+        Parámetros:
+            valor_prueba: El valor objetivo a verificar.
+            combinacion: Una lista de cadenas que representa una secuencia de números y operadores.
+        Retorno: true si la combinación produce el valor objetivo, de lo contrario false.
+
+    4. crear_combinaciones: Genera todas las combinaciones posibles de operadores entre los números y verifica si alguna de ellas produce el valor objetivo.
+        Parámetros:
+            linea: Una línea del archivo que contiene el valor objetivo y los números.
+            resultado: El valor resultante si se encuentra una combinación que da el valor objetivo.
+        Retorno: true si se encuentra una combinación que cumple con el valor objetivo, de lo contrario false.
+
+---
+
+## Descripción de la Solución
+    1. Leer datos del archivo: La función abrir_archivo lee las líneas del archivo de entrada y las almacena en un vector.
+    2. Procesar cada línea: Para cada línea, se extraen el valor objetivo y los números utilizando la función leer_linea.
+    3. Generar combinaciones: Se generan todas las combinaciones posibles de operadores (+ y *) entre los números y se verifica si alguna de estas combinaciones da como resultado el valor objetivo utilizando la función crear_combinaciones.
+    4. Verificación: La función comprobar_combinacion aplica los operadores a los números y verifica si se obtiene el valor objetivo.
+
+## Como Compilar y Ejecutar el Código
+
+Para compilar el código fuente, ejecute el siguiente comando en la terminal:
+	g++ -o day7 day7.cpp day7.h
+Para ejecutar el programa, ejecute el siguiente comando en la terminal:
+	./day7

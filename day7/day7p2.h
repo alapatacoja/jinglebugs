@@ -36,12 +36,21 @@ void leer_linea(long long* valor_prueba, vector<long long>& numeros, const strin
 
 long long comprobar_siguientes(long long i, const vector<string>& combinacion){
         //caso base encontramos un operado diferente, o , caso base es el ultimo, cuando compruebe el siguiente se saldrá del bucle
-        if(i+2>= combinacion.size()|| combinacion[i+2] !="||"){
+        if(i+2 > combinacion.size()) return i; //significa que || es el ultimo operando del vector
+	else{
+		i = i+ 2;
+		for(long long j = i; j<combinacion.size(); j+=2){
+		if(combinacion[j]!="||") return j-2; //el siguiente operando no es ||, j es la última posicion del operando ||
+		}
+	}	
+	return combinacion.size()-2; //hemos llegado al final del vector y el último operando también es "||"
+	
+	/*if(i+2>= combinacion.size()|| combinacion[i+2] !="||"){
 		return i;
 	}
 
 	i+=2;
-        return comprobar_siguientes(i, combinacion);
+        return comprobar_siguientes(i, combinacion);*/
 }
 
 // Función para verificar si una combinación específica de operadores produce el valor objetivo
@@ -51,24 +60,24 @@ bool comprobar_combinacion(long long valor_prueba, const vector<string>& combina
         string operador = combinacion[i];
         long long numero = stoll(combinacion[i + 1]);
 	long long n = 0;
-	//if((i+2<combinacion.size()&&combinacion[i+2]=="||") || (i==1 && combinacion[i]=="||")) { 
-	if(combinacion[i+2]=="||"){
+	//if((i+2<combinacion.size()&&combinacion[i+2]=="||") || (i==1 && combinacion[i]=="||")) {  
+	   if(i+2<combinacion.size() && operador!="||" && combinacion[i+2]=="||"){
         	cout<<"Hay un || en: " << i+2 <<endl;
                 long long r = stoll(combinacion[i+1]);//primer numero que hay que juntar
 		n = comprobar_siguientes(i+2, combinacion);//comrobamos si hay que juntar varios seguidos y guardamos en n la posicion del ultimo
-  			cout<<"i: "<<i<<"N: "<<n<<endl;
-			for(long long k = i; k <= n; k += 2){
-                                r = stoll(to_string(r)+combinacion[k+1]);
-                        }
-                        numero = r; // y saltar el resto de números
-			if (combinacion[i] == "+") {
-                		resultado += numero;
-        		} else if (combinacion[i] == "*") {
-                		resultado *= numero;
-        		}
-			i = n;
-			cout<<"Resultado de juntar: "<<numero<< endl;
-	} else if(combinacion[i]=="||"){
+  		cout<<"i: "<<i<<"N: "<<n<<endl;
+		for(long long k = i+2; k <= n; k += 2){
+                	r = stoll(to_string(r)+combinacion[k+1]);
+                }
+                numero = r;
+		cout<<"Resultado de juntar: "<<numero<< endl;
+		if (combinacion[i] == "+") {
+                	resultado += numero;
+        	} else if (combinacion[i] == "*") {
+                	resultado *= numero;
+        	}
+		i = n; //posición del último || ya que el for hará i+=2 para apuntar al siguiente operando
+	} else if(operador =="||"){
 	   	cout<<"Hay un || en: " << i <<endl;
                 long long r = stoll(combinacion[i-1]);//primer numero que hay que juntar
 		n = comprobar_siguientes(i, combinacion);//comrobamos si hay que juntar varios seguidos y guardamos en n la posicion del ultimo || seguidos
@@ -77,7 +86,7 @@ bool comprobar_combinacion(long long valor_prueba, const vector<string>& combina
                 }
 		if(i==1) resultado =0;
                 resultado += r; // y saltar el resto de números
-		i = n;
+		i = n;//posición del último || ya que el for hará i+=2 para apuntar al siguiente operando
                 cout<<"Resultado de juntar: "<<resultado<< endl;
 	} else{	
      		if (operador == "+") {
