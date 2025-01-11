@@ -1,15 +1,12 @@
 #include <iostream>
 #include <fstream>
-#include <sstream>
 #include <vector>
 #include <string>
-#include <queue>
-#include <cmath>
 #include <climits>
 using namespace std;
 
-struct Node
-{
+//nodo del arbol
+struct Node {
     int x, y;
     int puntos;
     int direccion;
@@ -25,7 +22,7 @@ struct Node
     }
 };
 
-
+//para rellenar el mapa
 void rellenarmapa(vector<vector<char>> &mapa)
 {
     ifstream file("input.txt");
@@ -37,6 +34,7 @@ void rellenarmapa(vector<vector<char>> &mapa)
     file.close();
 }
 
+//para comprobar que se puede mover
 bool valido(int x, int y, vector<vector<char>> &mapa)
 {
     if (x >= 0 && x < mapa.size() && y >= 0 && y < mapa[0].size() && mapa[x][y] != '#')
@@ -45,103 +43,70 @@ bool valido(int x, int y, vector<vector<char>> &mapa)
         return false;
 }
 
-int recalculardir(Node* n, int &x, int &y, int sentido){
-    int dir = n->direccion;
-
-    if(sentido==0){
-        if(dir==3) dir=0;
-        else dir+=1;
-    } else if(sentido==1){
-        if(dir==0) dir=3;
-        else dir-=1;
+// para calcular la direccion y los ejes x e y
+int recalculardir(int direccion, int sentido, int &x, int &y) {
+    if (sentido == 0) {
+        if(direccion==3) direccion=0;
+        else direccion+=1;
+    } else if (sentido == 1) {
+         if(direccion==0) direccion=3;
+        else direccion-=1;
     }
-
-    switch(dir){
-            case 0:
-                x = n->x-1;
-                y = n->y;
-                
-                break;
-            case 1:
-                x = n->x;
-                y = n->y+1;
-                
-                break;
-            case 2:
-                x = n->x+1;
-                y = n->y;
-                
-                break;
-            case 3:
-                x = n->x;
-                y = n->y-1;
-                
-                break;
-        }
-
-        return dir;
+    switch (direccion) {
+        case 0: x--; break;
+        case 1: y++; break;
+        case 2: x++; break;
+        case 3: y--; break;
+    }
+    return direccion;
 }
 
-int shortestpath(vector<vector<char>> &mapa, int xini, int yini, int xfin, int yfin)
-{
-    Node *root = new Node(xini, yini, 0, 1);
-    queue<Node *> q;
-    q.push(root);
 
-    vector<vector<vector<bool>>> visitado(mapa.size(), vector<vector<bool>>(mapa[0].size(), vector<bool>(4, false)));
-    visitado[xini][yini][1] = true;
+//comprueba los tres posibles movimientos: recto, girar a la derecha o a la izquierda
+void explorar(Node* n, vector<vector<char>> &mapa, int xfin, int yfin, vector<vector<vector<int>>> &visitado, int &minpuntos) {
+    
+    if (n->x == xfin && n->y == yfin) {
+        minpuntos = min(minpuntos, n->puntos);
+        return;
+    }
+
+    for (int sentido = -1; sentido <= 1; sentido++) {
+        int tempx = n->x;
+        int tempy = n->y;
+        int dir = recalculardir(n->direccion, sentido, tempx, tempy);
+
+        int puntos = 0;
+
+        if(sentido == -1)
+            puntos = n->puntos + 1;
+        else
+            puntos = n->puntos + 1001;
+
+        if (valido(tempx, tempy, mapa) && puntos < visitado[tempx][tempy][dir]) {
+            visitado[tempx][tempy][dir] = puntos;
+            Node* n2 = new Node(tempx, tempy, puntos, dir, n);
+            explorar(n2, mapa, xfin, yfin, visitado, minpuntos);
+            delete n2; 
+        }
+    }
+}
+
+//para ver el camino más corto
+int shortestpath(vector<vector<char>> &mapa, int xini, int yini, int xfin, int yfin) {
+    vector<vector<vector<int>>> visitado(mapa.size(), vector<vector<int>>(mapa[0].size(), vector<int>(4, INT_MAX)));
+
+    Node* root = new Node(xini, yini, 0, 1);
+    visitado[xini][yini][1] = 0;
 
     int minpuntos = INT_MAX;
 
-    while (!q.empty())
-    {
-        Node *n = q.front();
-        q.pop();
-        //cout << "("<<n->x<<","<<n->y<<") "<<n->puntos<<endl;
-        if (n->x == xfin && n->y == yfin)
-        {
-            minpuntos = min(minpuntos, n->puntos);
-            cout << "ueu" << endl;
-            delete n;
-            continue;
-        }
+    explorar(root, mapa, xfin, yfin, visitado, minpuntos);
 
-        int tempx;
-        int tempy;
-        int dir;
-        //0 norte, 1 este, 2 sur, 3 oeste
-        dir = recalculardir(n, tempx, tempy, -1);
-        
-        if(valido(tempx, tempy, mapa) && !visitado[tempx][tempy][n->direccion]){
-            Node* sig = new Node(tempx, tempy, (n->puntos)+1, n->direccion, n);
-            q.push(sig);
-            visitado[tempx][tempy][n->direccion] = true;
-            //cout << "palante ("<<tempx<<","<<tempy<<") "<<sig->puntos<<endl;
-        }
-
-        dir = recalculardir(n, tempx, tempy, 0);
-        if (valido(tempx, tempy, mapa) && !visitado[tempx][tempy][dir]) {
-            Node* sig = new Node(tempx, tempy, (n->puntos) + 1001, dir, n);
-            q.push(sig);
-            visitado[tempx][tempy][dir] = true;
-            //cout << "horario ("<<tempx<<","<<tempy<<") "<<sig->puntos<<endl;
-        }
-
-        dir = recalculardir(n, tempx, tempy, 1);
-        if (valido(tempx, tempy, mapa) && !visitado[tempx][tempy][dir]) {
-            Node* sig = new Node(tempx, tempy, n->puntos + 1001, dir, n);
-            q.push(sig);
-            visitado[tempx][tempy][dir] = true;
-            //cout << "antihorario ("<<tempx<<","<<tempy<<") "<<sig->puntos<<endl;
-        }
-        delete n;
-    }
-
+    delete root;
     return minpuntos;
 }
 
-int main()
-{
+int main() {
     vector<vector<char>> mapa;
     rellenarmapa(mapa);
 
@@ -158,10 +123,6 @@ int main()
         }
     }
 
-    
-
     int result = shortestpath(mapa, xini, yini, xfin, yfin);
-    cout << xfin<<" " <<yfin << endl;
-    cout << result << endl;
-
+    cout << "Resultado: " << result << endl;
 }
