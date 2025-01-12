@@ -36,3 +36,9 @@ Elegimos este problema porque hacía uso de árboles y búsqueda en anchura (BFS
 5. Al finalizar el recorrido, se imprimen los puntos del camino con menos coste.
 
 ---
+
+## Alternativas
+A la hora de hacer el ejercicio, nos planteabamos la idea de hacerlo mediante árboles o mediante hash, pero descartamos rápidamente la segunda opción debido a que no encontramos un planteamiento adecuado de esa forma.
+
+## Valoracion
+Este ejercicio ha sido uno de los más complicados, ya que, el input grande dado no nos daba una solución correcta aunque los inputs pequeños dados en el enunciado sí, sin importar lo mucho que intentásemos arreglarlo. Aunque al final sí que hemos conseguido que funcione.  

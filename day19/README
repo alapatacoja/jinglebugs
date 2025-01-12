@@ -33,3 +33,11 @@ Elegimos este problema porque se podía resolver con Programación Dinámica.
    - Finalmente, se imprime el número total de diseños que pueden ser formados con los patrones disponibles.
 
 ---
+
+## Alternativas  
+Nuestra idea desde un inicio siempre fue resolverlo por programación dinámica, ya que, pensamos que era la forma más eficiente de poder comprobar los distintos patrones. La única otra opción que se nos ocurre sería hacerlo iterativamente o con fuerza bruta, lo cual empeoraría la eficiencia del código. 
+
+---
+
+## Valoración  
+Este problema fue un gran ejercicio para practicar Programación Dinámica, especialmente antes del parcial, ya que, nos ayudó a asentar nuestros conocimientos. 

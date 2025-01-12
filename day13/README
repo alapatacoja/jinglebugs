@@ -20,7 +20,7 @@ Elegimos este problema porque pensábamos que podría ser resuelto mediante Prog
 ---
 
 ## Descripción de la Solución
-### Primera Parte:
+
 1. Se lee el archivo `input.txt` y, utilizando regex, se extraen las configuraciones de cada máquina (`ax`, `ay`, `bx`, `by`, `px`, `py`).
 
 2. Para cada máquina, se calcula el determinante del sistema y se verifica que sea distinto de cero. Se calculan las soluciones `x` y `y` utilizando la fórmula de Cramer. Se valida que las soluciones sean enteras y menores a 100.
@@ -32,3 +32,9 @@ Elegimos este problema porque pensábamos que podría ser resuelto mediante Prog
 En la segunda parte se añade la dificultad de añadir a la posición de los premios 10000000000000.
 
 ---
+
+## Alternativa
+Como hemos mencionado anteriormente, al leer el ejercicio pensábamos que podría haber sido resuelto mediante programación dinámica, pero a la hora de empezar a desarrollar la solución descubrimos que se podía hacer fácilmente con un sistema de ecuaciones lineales. 
+
+## Valoracion
+Al ser el primer sistema de ecuaciones que hemos hecho en codigo, ha sido muy divertido poder investigar y plantear diferentes formas de resolverlas. Además, hacer el input con regex también ha sido un reto interesante porque no estamos tan familiarizadas con él.

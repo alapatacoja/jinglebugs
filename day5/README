@@ -34,4 +34,10 @@ Elegimos este problema porque permite practicar técnicas de manejo de estructur
 
 6. El programa imprime la suma total de las páginas centrales tras procesar todas las secuencias.
          
+## Alternativas
+En este ejercicio, utilizar tablas hash para localizar las páginas en las secuencias habría permitido búsquedas más rápidas, optimizando la validación de reglas en comparación con la búsqueda lineal.  
+
+
+## Valoración  
+Resolver este problema ha sido muy útil a la hora de practicar el uso de algoritmos de ordenación, aunque sean métodos simples. También nos ha ayudado a aprender a usar `pair`.
 

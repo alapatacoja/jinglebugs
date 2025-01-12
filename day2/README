@@ -33,3 +33,9 @@ En la segunda parte se añaden unos cambios para cumplir el nuevo requisito: si 
       - Si un informe no es seguro, se intenta corregir eliminando uno de sus niveles mediante un bucle.
       - Se crea una copia temporal del informe (temp) sin el nivel actual, y se verifica si esta nueva versión cumple las condiciones de seguridad.
       - Si alguna de estas versiones corregidas es segura, el informe se considera seguro, se sale del bucle y se incrementa la variable `safes`.
+
+## Alternativas
+Otra forma de haber hecho el ejercicio podría haber sido utilizando programación dinámica con memoria para almacenar informes que hayan sido comprobados anteriormente, sin embargo, a la hora de hacer el ejercicio no se nos ocurrió esa posibilidad. 
+
+## Valoracion
+Resolver este problema reforzó nuestras habilidades en diseño de algoritmos, validaciones múltiples y sobretodo el uso de estructuras como vectores. 

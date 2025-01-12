@@ -6,7 +6,7 @@ El objetivo del problema es encontrar la cantidad total de celdas con valor `9` 
 ---
 
 ## Motivación para Elegir este Problema
-Elegimos este problema porque combina conceptos interesantes como la búsqueda en anchura (BFS) y grafos.
+Elegimos este problema porque usa conceptos interesantes como la búsqueda en anchura (BFS) y grafos.
 
 ---
 
@@ -20,7 +20,7 @@ Elegimos este problema porque combina conceptos interesantes como la búsqueda e
 
 ## Descripción de la Solución
 
-1. La función `leer` se encarga de leer el archivo de entrada `input.txt` y construir una matriz 2D (`mapa`). Cada línea del archivo representa una fila del mapa, donde los caracteres se convierten en enteros y se almacenan en un `vector<vector<int>>`.
+1. La función `leer` se encarga de leer el archivo de entrada `input.txt` y construir una matriz (`mapa`). Cada línea del archivo representa una fila del mapa, donde los caracteres se convierten en enteros y se almacenan en un `vector<vector<int>>`.
 
 2. Se recorren todas las celdas del mapa. Cada vez que se encuentra una celda con valor `0`, se llama a la función `shortestpath` para contar cuántas celdas con valor `9` son alcanzables desde esa posición.
 
@@ -34,3 +34,11 @@ Elegimos este problema porque combina conceptos interesantes como la búsqueda e
 5. Al finalizar el recorrido, se imprime la suma total de celdas alcanzadas.
 
 ---
+
+## Alternativas  
+Desde el principio, nuestro objetivo fue resolver el ejercicio mediante grafos para poder practicar su uso. Aunque también planteamos la idea de usar programación dinámica para almacenar cuántas celdas con valor `9` son alcanzables desde cada punto, descartamos la idea debido a que queríamos probar con una solución distinta. 
+
+---
+
+## Valoración  
+Este problema nos permitió trabajar con grafos y poder asentar conocimientos que habiamos aprendido en clase, lo cual fue extremadamente útil de cara al parcial.
