@@ -32,4 +32,4 @@ Elegimos este problema se podia implementar utilizando una tabla hash para manej
 Una posible implementación del problema podría haber incluido programación dinámica, en lugar de tabla hash, para almacenar los resultados. Pero a la hora de resolver el ejercicio elegimos la tabla para poder realizar todos los tipos de estructuras dadas en clase.
 
 ## Valoracion
-Este problema ayudó para poner en uso nuestros conociientos de estructuras de datos y eficiencia.
+Este problema ayudó para poner en uso nuestros conocimientos de estructuras de datos y eficiencia.
