@@ -29,4 +29,9 @@ Era el problema del día en advent code.
 4. Le pasamos a la funcion del movimiento del guardia el mapa y la posicion. 
 5. Returnear las posiciones que ha visitado el guardia, para saber en cuántas posiciones podemos colocar un objeto que le haga entrar en el bucle infinito.
 
+## Alternativas
+Otra forma de haber hecho el ejercicio era utilizando Programación dinámica o grafos, pero en su momento nos resultó más sencillo e intuitivo realizarlo de forma directa utilizando fuerza bruta. 
+
+## Valoracion
+Resolver este problema nos ayudó a comprender mejor la simulación y el manejo de datos. 
 

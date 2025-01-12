@@ -31,3 +31,9 @@ Era el problema del día en advent code.
 
 - En la segunda parte se añaden unos cambios para cumplir el nuevo requisito: las instrucciones contan de un do/dont delante que las habilitan o desactivan.
 
+
+## Alternativas
+Otra forma de haber hecho el ejercicio era mediante el uso de memoria en programación dinámica, pero no se implementó de esta forma debido a qu el inicio del advent code nos era más intuitivo de forma directa. 
+
+## Valoracion
+Este problema nos ayudó a desarrollar nuestro pensamiento crítico y estructurado para abordar el problema.

@@ -27,3 +27,9 @@ Elegimos este problema se podia implementar utilizando una tabla hash para manej
 4. Verificar que las coordenadas están en los límites del mapa, y agregar la coordenada al conjunto de antinodos.
 
 5. Finalmente, devolvemos el tamaño del conjunto de antinodos que es el número total de antinodos.
+
+## Alternativas
+Una posible implementación del problema podría haber incluido programación dinámica, en lugar de tabla hash, para almacenar los resultados. Pero a la hora de resolver el ejercicio elegimos la tabla para poder realizar todos los tipos de estructuras dadas en clase.
+
+## Valoracion
+Este problema ayudó para poner en uso nuestros conociientos de estructuras de datos y eficiencia.
